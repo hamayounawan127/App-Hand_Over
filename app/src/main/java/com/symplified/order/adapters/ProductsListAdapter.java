@@ -1,28 +1,27 @@
 package com.symplified.order.adapters;
 
 import android.content.Context;
-import android.icu.text.Transliterator;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.symplified.order.R;
-import com.symplified.order.models.product.Products;
+import com.symplified.order.models.product.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapter.ViewHolder> {
 
     private Context context;
-        private ArrayList<Products>productsList;
+        private List<Product>productsList;
+//        private List<Products>productsList;
 
-        public ProductsListAdapter (Context context, ArrayList<Products> productsList)
+        public ProductsListAdapter (Context context, List<Product> productsList)
         {
             this.context = context;
             this.productsList = productsList;
@@ -39,9 +38,10 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)
     {
-        Products products = productsList.get(position);
-        holder.setProdIcon(products.getProdImageview());
-        holder.setProdTitle(products.getProdName());
+        Product product = productsList.get(position);
+        Log.i("Product: ", product.toString());
+//        holder.prodIcon.setImageResource(R.drawable.ic_check_circle_black_24dp);
+        holder.prodTitle.setText(product.getName());
     }
 
     @Override
@@ -51,20 +51,16 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapte
     {
         TextView prodTitle;
         ImageView prodIcon;
-        RelativeLayout relativeLayout;
+//        RelativeLayout relativeLayout;
 
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
             this.prodTitle = itemView.findViewById(R.id.prodName);
             this.prodIcon = itemView.findViewById(R.id.prodImg);
-            this.relativeLayout = itemView.findViewById(R.id.productsRecyclerView);
         }
 
-        public void setRelativeLayout(RelativeLayout relativeLayout) { this.relativeLayout = relativeLayout; }
-
         public void setProdTitle(String prodName) { this.prodTitle = prodTitle; }
-
         public void setProdIcon(int prodImageview) { this.prodIcon = prodIcon; }
     }
 }

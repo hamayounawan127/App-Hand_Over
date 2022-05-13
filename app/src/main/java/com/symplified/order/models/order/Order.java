@@ -40,6 +40,222 @@ public class Order implements Serializable {
     public List<OrderRefund> orderRefund;
     public boolean isRevised;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
+    }
+
+    public Double getDeliveryCharges() {
+        return deliveryCharges;
+    }
+
+    public void setDeliveryCharges(Double deliveryCharges) {
+        this.deliveryCharges = deliveryCharges;
+    }
+
+    public Double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(Double subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public String getCompletionStatus() {
+        return completionStatus;
+    }
+
+    public void setCompletionStatus(String completionStatus) {
+        this.completionStatus = completionStatus;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public String getCustomerNotes() {
+        return customerNotes;
+    }
+
+    public void setCustomerNotes(String customerNotes) {
+        this.customerNotes = customerNotes;
+    }
+
+    public String getPrivateAdminNotes() {
+        return privateAdminNotes;
+    }
+
+    public void setPrivateAdminNotes(String privateAdminNotes) {
+        this.privateAdminNotes = privateAdminNotes;
+    }
+
+    public String getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public String getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(String invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+
+    public Double getKlCommission() {
+        return klCommission;
+    }
+
+    public void setKlCommission(Double klCommission) {
+        this.klCommission = klCommission;
+    }
+
+    public Double getStoreServiceCharges() {
+        return storeServiceCharges;
+    }
+
+    public void setStoreServiceCharges(Double storeServiceCharges) {
+        this.storeServiceCharges = storeServiceCharges;
+    }
+
+    public Double getStoreShare() {
+        return storeShare;
+    }
+
+    public void setStoreShare(Double storeShare) {
+        this.storeShare = storeShare;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public Double getAppliedDiscount() {
+        return appliedDiscount;
+    }
+
+    public void setAppliedDiscount(Double appliedDiscount) {
+        this.appliedDiscount = appliedDiscount;
+    }
+
+    public Double getDeliveryDiscount() {
+        return deliveryDiscount;
+    }
+
+    public void setDeliveryDiscount(Double deliveryDiscount) {
+        this.deliveryDiscount = deliveryDiscount;
+    }
+
+    public String getAppliedDiscountDescription() {
+        return appliedDiscountDescription;
+    }
+
+    public void setAppliedDiscountDescription(String appliedDiscountDescription) {
+        this.appliedDiscountDescription = appliedDiscountDescription;
+    }
+
+    public String getDeliveryDiscountDescription() {
+        return deliveryDiscountDescription;
+    }
+
+    public void setDeliveryDiscountDescription(String deliveryDiscountDescription) {
+        this.deliveryDiscountDescription = deliveryDiscountDescription;
+    }
+
+    public OrderShipmentDetail getOrderShipmentDetail() {
+        return orderShipmentDetail;
+    }
+
+    public void setOrderShipmentDetail(OrderShipmentDetail orderShipmentDetail) {
+        this.orderShipmentDetail = orderShipmentDetail;
+    }
+
+    public OrderPaymentDetail getOrderPaymentDetail() {
+        return orderPaymentDetail;
+    }
+
+    public void setOrderPaymentDetail(OrderPaymentDetail orderPaymentDetail) {
+        this.orderPaymentDetail = orderPaymentDetail;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<OrderRefund> getOrderRefund() {
+        return orderRefund;
+    }
+
+    public void setOrderRefund(List<OrderRefund> orderRefund) {
+        this.orderRefund = orderRefund;
+    }
+
+    public boolean isRevised() {
+        return isRevised;
+    }
+
+    public void setRevised(boolean revised) {
+        isRevised = revised;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

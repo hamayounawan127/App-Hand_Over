@@ -78,7 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         ImageView products = toolbar.findViewById(R.id.app_bar_products);
         products.setOnClickListener(view -> {
-            Intent intent = new Intent(this, SettingsActivity.class);
+            Intent intent = new Intent(this, ProductsActivity.class);
             startActivity(intent);
         });
     }
