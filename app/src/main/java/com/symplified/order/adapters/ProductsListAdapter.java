@@ -1,25 +1,32 @@
 package com.symplified.order.adapters;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.symplified.order.ProductDetailsActivity;
 import com.symplified.order.R;
 import com.symplified.order.models.product.Product;
+import com.symplified.order.services.DownloadImageTask;
+import com.symplified.order.utils.Utility;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapter.ViewHolder> {
 
     private Context context;
         private List<Product>productsList;
-//        private List<Products>productsList;
 
         public ProductsListAdapter (Context context, List<Product> productsList)
         {
@@ -38,10 +45,31 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)
     {
-        Product product = productsList.get(position);
-        Log.i("Product: ", product.toString());
-//        holder.prodIcon.setImageResource(R.drawable.ic_check_circle_black_24dp);
-        holder.prodTitle.setText(product.getName());
+//        try {
+//            Bitmap bitmap = new DownloadImageTask().execute(productsList.get(position).thumbnailUrl).get();
+//            if (bitmap != null) {
+//                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
+//                String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
+//                if (encodedImage != null) {
+//                    Utility.decodeAndSetImage(holder.prodIcon, encodedImage);
+//                }
+//            }
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        holder.prodTitle.setText(productsList.get(position).getName());
+//        holder.prodPrice.setText(new Double(productsList.get(position).productInventories.get(0).price).toString());
+        holder.prodPrice.setText(String.format("%.2f", productsList.get(position).productInventories.get(0).price));
+
+        holder.prod_cardView.setOnClickListener(view -> {
+            Intent intent = new Intent(holder.itemView.getContext(), ProductDetailsActivity.class);
+            intent.putExtra("product", productsList.get(position));
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
@@ -50,17 +78,18 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapte
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView prodTitle;
+        TextView prodPrice;
         ImageView prodIcon;
-//        RelativeLayout relativeLayout;
+        CardView prod_cardView;
 
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
             this.prodTitle = itemView.findViewById(R.id.prodName);
+            this.prodPrice = itemView.findViewById(R.id.prodPrice);
             this.prodIcon = itemView.findViewById(R.id.prodImg);
+            this.prod_cardView = itemView.findViewById(R.id.product_card_parent);
         }
 
-        public void setProdTitle(String prodName) { this.prodTitle = prodTitle; }
-        public void setProdIcon(int prodImageview) { this.prodIcon = prodIcon; }
     }
 }

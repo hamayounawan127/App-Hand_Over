@@ -7,10 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,8 +37,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ProductsActivity extends AppCompatActivity
 {
     private Toolbar toolbar;
-//    private Button productDetailsBtn;
-
     private RecyclerView productsrecyclerView;
     List<Product> productsList = new ArrayList<>();
     ProductsListAdapter productsListAdapter;
@@ -53,10 +53,8 @@ public class ProductsActivity extends AppCompatActivity
         setContentView(R.layout.activity_products);
         toolbar = findViewById(R.id.toolbar);
         productsrecyclerView = findViewById(R.id.productsRecyclerView);
-        initToolbar(sharedPreferences);
 
-//        init();
-//        generateData();
+        initToolbar(sharedPreferences);
         setData();
         getProductsList();
     }
@@ -114,20 +112,12 @@ public class ProductsActivity extends AppCompatActivity
         products.setOnClickListener(view -> {
             Toast.makeText(this, "Opened!", Toast.LENGTH_SHORT).show();
         });
-
-//        ImageView productsDetailsBtn = productDetailsBtn.findViewById(R.id.product_Details_Btn);
-//        productsDetailsBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     private void getProductsList()
     {
         Map<String, String> headers = new HashMap<>();
+        Log.i("StoreId: ", storeId);
         headers.put("Authorization", "Bearer Bearer accessToken");
         Retrofit retrofit = new Retrofit.Builder().client(new OkHttpClient())
                 .baseUrl("https://api.symplified.it/product-service/v1/")
